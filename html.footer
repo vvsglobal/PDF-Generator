@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Footer</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 6px 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9px;
+      color: #444;
+    }
+
+    .line {
+      margin-bottom: 6px;
+      border-top: 1px solid #ddd;
+    }
+
+    .url {
+      word-break: break-all;
+    }
+
+    a {
+      color: #444;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="line"></div>
+
+  <!-- URL will be injected dynamically -->
+  <div class="url" id="sourceUrl"></div>
+
+  <script>
+    // Grab ?url= from query string
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get('url');
+
+    if (url) {
+      const el = document.getElementById('sourceUrl');
+      el.innerHTML = 'Source: <a href="' + url + '">' + url + '</a>';
+    }
+  </script>
+</body>
+</html>
